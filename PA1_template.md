@@ -16,7 +16,7 @@ activity <- read.csv(file = "activity.csv")
 The total number, mean, and median, of steps taken per day are as follows:
 
 ### Total steps per day
-```{r, results = TRUE}
+```{r}
 as.data.frame(tapply(activity$steps, activity$date, sum))
 ```
 ### Mean steps per day
