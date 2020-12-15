@@ -224,6 +224,8 @@ as.data.frame(tapply(activity$steps, activity$date, median))
     ## 11/9/2012                                             NA
 
 ### Histogram of total steps taken per day
+![plot1](instructions_fig/hist_steps_day.png) 
+
 
 ``` r
 total <- tapply(activity$steps, activity$date, sum)
@@ -231,7 +233,6 @@ total <- as.numeric(total) # change to numeric vector
 hist(total, xlab = "Total steps per day", main = "Frequency distribution of total steps per day", breaks = 30)
 ```
 
-![](PA1_template_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 ## What is the average daily activity pattern?
 
@@ -262,7 +263,7 @@ throughout a day, averaged across all days in the dataset. Each day has
 ggplot(data = is, aes(x = interval, y = steps)) + geom_line(col = "blue") + labs(title = "Steps Taken in a Day Per 5-minute Intervals", x = "Interval in Minutes", y = "Steps")
 ```
 
-![](PA1_template_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![plot2](instructions_fig/mean_steps_plot.png) 
 
 To answer the question: **Which 5-minute interval, on average across all
 the days in the dataset, contains the maximum number of steps?**, we can
@@ -341,7 +342,7 @@ hist(total, xlab = "Total steps per day", main = "Before imputing", breaks = 30,
 hist(total2, xlab = "Total steps per day", main = "After imputing", breaks = 30, col = "green")
 ```
 
-![](PA1_template_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![plot3](instructions_fig/before_after_imputing.png) 
 
 The above histogram shows that there isn’t very much change between the
 historgams before versus after imputing the values other than that the
@@ -372,6 +373,9 @@ Below is the code for sorting the data to create the plot comparing
 weekend and weekday activity. As can be seen, people tend to be less
 active during weekends, and tend to stay inactive until later on in the
 day.
+
+![plot4](instructions_fig/weekplot.png) 
+
 
 ``` r
 library(lubridate)
@@ -420,4 +424,3 @@ library(lattice)
 xyplot(steps ~ interval | week, data = wk, layout = c(1,2), type = "l")
 ```
 
-![](PA1_template_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
