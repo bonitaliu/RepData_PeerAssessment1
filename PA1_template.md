@@ -28,6 +28,9 @@ as.data.frame(tapply(activity$steps, activity$date, mean))
 as.data.frame(tapply(activity$steps, activity$date, median))
 ```
 ### Histogram of total steps taken per day
+
+![Histogram of total steps taken per day](instructions_fig/hist_steps_day.png) 
+
 ```{r}
 total <- tapply(activity$steps, activity$date, sum)
 total <- as.numeric(total) # change to numeric vector
@@ -47,6 +50,8 @@ is$interval <- as.character(is$interval); is$interval <- as.numeric(is$interval)
 str(is) # check that format is correct in 'is', the dataframe for plotting
 ```
 Below is a time series plot of steps taken at 5-minute intervals throughout a day, averaged across all days in the dataset. Each day has 288 intervals.
+![Steps per day plot](instructions_fig/mean_steps_plot.png) 
+
 ```{r}
 ggplot(data = is, aes(x = interval, y = steps)) + geom_line(col = "blue") + labs(title = "Steps Taken in a Day Per 5-minute Intervals", x = "Interval in Minutes", y = "Steps")
 ```
@@ -81,6 +86,7 @@ par(mfrow = c(1, 2))
 hist(total, xlab = "Total steps per day", main = "Before imputing", breaks = 30, col = "magenta")
 hist(total2, xlab = "Total steps per day", main = "After imputing", breaks = 30, col = "green")
 ```
+![Before and after imputing plots](instructions_fig/before_after_imputing.png) 
 
 
 The above histogram shows that there isn't very much change between the historgams before versus after imputing the values other than that the frequency of 0s increased a lot, due to the method of imputation used.
@@ -95,6 +101,10 @@ summary(total) # before imputing
 
 ## Are there differences in activity patterns between weekdays and weekends?
 Below is the code for sorting the data to create the plot comparing weekend and weekday activity. As can be seen, people tend to be less active during weekends, and tend to stay inactive until later on in the day.
+
+![Weekly pattern plot](instructions_fig/weekplot.png) 
+
+
 ```{r}
 library(lubridate)
 
